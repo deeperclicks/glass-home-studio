@@ -7,7 +7,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-24 px-4 pb-8 md:px-6">
       <div className="glass-strong mx-auto max-w-6xl rounded-[2.5rem] p-8 md:p-12">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr]">
           <div>
             <img
               src={logo}
@@ -18,10 +18,6 @@ export function SiteFooter() {
               className="h-16 w-16 origin-left transition-transform duration-500 ease-out hover:scale-125"
             />
             <h2 className="mt-4 font-display text-xl font-bold">{SITE.name}</h2>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A boutique interior studio in {SITE.city}. We design and build homes that feel like the
-              people living in them — carefully, and with one team you can actually reach.
-            </p>
             <a
               href={SITE.instagram}
               target="_blank"
@@ -30,21 +26,6 @@ export function SiteFooter() {
             >
               <Instagram className="h-4 w-4" /> @dn_designstudio.vja
             </a>
-          </div>
-
-          <div>
-            <h3 className="font-display text-sm font-bold uppercase tracking-[0.2em] text-foreground/70">
-              Explore
-            </h3>
-            <ul className="mt-4 space-y-2.5 text-sm">
-              {NAV_LINKS.map((l) => (
-                <li key={l.to}>
-                  <Link to={l.to} className="text-muted-foreground transition-colors hover:text-primary">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div>
