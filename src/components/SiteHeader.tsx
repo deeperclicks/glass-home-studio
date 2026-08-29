@@ -29,9 +29,6 @@ export function SiteHeader() {
           <img src={logo} alt="DN Design Studio Home Interiors logo" width={40} height={40} className="h-9 w-9" />
           <span className="font-display text-base font-bold leading-none tracking-tight md:text-lg">
             DN Design Studio
-            <span className="block text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Home Interiors
-            </span>
           </span>
         </Link>
 
