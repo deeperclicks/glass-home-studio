@@ -5,8 +5,12 @@ import { SITE } from "@/lib/site";
 export function SiteFooter() {
   return (
   <footer className="mt-24 px-4 pb-8 md:px-6">
-      <div className="glass-strong mx-auto max-w-6xl rounded-[2.5rem] p-8 md:p-12">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr]">
+      <div className="glass-strong group mx-auto max-w-6xl rounded-[2.5rem] p-8 md:p-12">
+        <div className="wordmark-shimmer font-display text-[clamp(2.5rem,8vw,6.5rem)] font-semibold leading-[0.9] tracking-tight">
+          {SITE.name}
+        </div>
+
+        <div className="mt-10 grid gap-10 md:grid-cols-[1.3fr_1fr]">
           <div>
             <a
               href={SITE.instagram}
