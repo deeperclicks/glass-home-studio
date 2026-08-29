@@ -45,11 +45,6 @@ export function SiteFooter() {
                 </a>
               </li>
               <li>
-                <a href={`mailto:${SITE.email}`} className="inline-flex items-center gap-2 hover:text-primary">
-                  <Mail className="h-4 w-4 text-primary" /> {SITE.email}
-                </a>
-              </li>
-              <li>
                 <a
                   href="https://www.google.com/maps/place/DN+Design+Studio+Home+Interiors/@16.4961146,80.6586827,17z/data=!4m9!1m2!29m1!1b1!3m5!1s0x3a35fb4fa47247bf:0xda44b10b8e917e2e!8m2!3d16.4961146!4d80.6634463!16s%2Fg%2F11x2590ff0?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
