@@ -96,9 +96,19 @@ function StudioLogin() {
             />
           </div>
           <Button type="submit" variant="hero" className="w-full" disabled={busy}>
-            {busy ? "Signing in…" : "Sign in"}
+            {busy ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}
           </Button>
+          <button
+            type="button"
+            onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
+            className="w-full text-center text-xs text-muted-foreground hover:text-primary"
+          >
+            {mode === "signin"
+              ? "First time here? Create the studio account"
+              : "Already have an account? Sign in"}
+          </button>
         </form>
+
       </div>
     </div>
   );
