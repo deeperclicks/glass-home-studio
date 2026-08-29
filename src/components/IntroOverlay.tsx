@@ -40,7 +40,10 @@ export function IntroOverlay() {
   return (
     <div
       aria-hidden="true"
-      className="canvas-gradient fixed inset-0 z-[10000] flex items-center justify-center transition-all duration-500"
+      className={cn(
+        "canvas-gradient fixed inset-0 z-[10000] flex items-center justify-center transition-all ease-[cubic-bezier(0.4,0,0.2,1)]",
+        phase === "out" ? "duration-500" : "duration-300",
+      )}
       style={
         phase === "out"
           ? { opacity: 0, clipPath: "inset(0 0 100% 0)" }
@@ -51,7 +54,7 @@ export function IntroOverlay() {
         {/* Phase 1: Home icon */}
         <div
           className={cn(
-            "absolute flex flex-col items-center transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            "absolute flex flex-col items-center transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
             phase === "home"
               ? "opacity-100 scale-100 rotate-0 blur-0"
               : "opacity-0 scale-125 -rotate-12 blur-sm",
@@ -63,7 +66,7 @@ export function IntroOverlay() {
         {/* Phase 2: Sofa icon */}
         <div
           className={cn(
-            "absolute flex flex-col items-center transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            "absolute flex flex-col items-center transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
             phase === "sofa"
               ? "opacity-100 scale-100 blur-0"
               : "opacity-0 scale-90 blur-sm",
@@ -76,7 +79,7 @@ export function IntroOverlay() {
         {/* Phase 3: Brand name with frosted glass backdrop */}
         <div
           className={cn(
-            "absolute flex flex-col items-center transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            "absolute flex flex-col items-center transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
             phase === "text" || phase === "out"
               ? "opacity-100 translate-y-0 blur-0"
               : "opacity-0 translate-y-4 blur-md",
