@@ -130,7 +130,7 @@ function PostsPanel() {
 
   async function create(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.title.trim()) return toast.error("Give the project a title");
+    if (!form.title.trim()) { toast.error("Give the project a title"); return; }
     setBusy(true);
     const { error } = await supabase.from("posts").insert({
       title: form.title.trim(),
@@ -147,7 +147,7 @@ function PostsPanel() {
       sort_order: posts.length,
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Published");
     setForm(emptyPost);
     refresh();
@@ -167,7 +167,7 @@ function PostsPanel() {
 
   async function remove(id: string) {
     const { error } = await supabase.from("posts").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     refresh();
   }
 
@@ -304,7 +304,7 @@ function ReviewsPanel() {
 
   async function create(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name.trim()) return toast.error("Add the reviewer's name");
+    if (!form.name.trim()) { toast.error("Add the reviewer's name"); return; }
     setBusy(true);
     const { error } = await supabase.from("reviews").insert({
       name: form.name.trim(),
@@ -315,7 +315,7 @@ function ReviewsPanel() {
       sort_order: reviews.length,
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Review published");
     setForm(emptyReview);
     refresh();
@@ -333,7 +333,7 @@ function ReviewsPanel() {
 
   async function remove(id: string) {
     const { error } = await supabase.from("reviews").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     refresh();
   }
 
