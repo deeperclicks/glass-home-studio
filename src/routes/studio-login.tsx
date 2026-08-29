@@ -36,6 +36,21 @@ function StudioLogin() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
+    if (mode === "signup") {
+      const { error } = await supabase.auth.signUp({
+        email: email.trim(),
+        password,
+        options: { emailRedirectTo: `${window.location.origin}/studio-login` },
+      });
+      setBusy(false);
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
+      toast.success("Account created. Sign in to open the dashboard.");
+      setMode("signin");
+      return;
+    }
     const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
     setBusy(false);
     if (error) {
@@ -48,11 +63,14 @@ function StudioLogin() {
   return (
     <div className="flex min-h-[70vh] items-center justify-center px-4">
       <div className="glass-strong w-full max-w-md rounded-[2.5rem] p-9">
-        <h1 className="font-display text-2xl font-bold">Studio Login</h1>
+        <h1 className="font-display text-2xl font-bold">
+          {mode === "signin" ? "Studio Login" : "Create studio account"}
+        </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           For the DN Design Studio team only.
         </p>
         <form onSubmit={onSubmit} className="mt-7 space-y-4">
+
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
