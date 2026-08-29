@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/dn-logo.png";
+import logoAsset from "@/assets/dn-logo.png.asset.json";
+
+const logo = logoAsset.url;
 import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
