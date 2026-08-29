@@ -68,12 +68,32 @@ function AdminPage() {
         {isAdmin === false && (
           <div className="glass-strong mt-6 rounded-3xl p-8 text-center">
             <h2 className="font-display text-lg font-bold">No studio access on this account</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              This login isn't marked as a studio admin yet. Ask your developer to grant admin access
-              to this email address.
+            <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
+              If this is the studio's first account, claim owner access below. Otherwise ask the
+              studio owner to add this email as an admin.
             </p>
+            <Button
+              variant="hero"
+              className="mt-5"
+              onClick={async () => {
+                const { data, error } = await supabase.rpc("claim_studio_admin");
+                if (error) {
+                  toast.error(error.message);
+                  return;
+                }
+                if (data) {
+                  toast.success("Studio access granted");
+                  setIsAdmin(true);
+                } else {
+                  toast.error("A studio owner already exists for this site.");
+                }
+              }}
+            >
+              Claim studio owner access
+            </Button>
           </div>
         )}
+
 
         {isAdmin && (
           <Tabs defaultValue="projects" className="mt-6">
