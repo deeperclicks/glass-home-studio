@@ -24,13 +24,13 @@ export function ServiceCard({ service, long = false }: { service: Service; long?
         <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
           {long ? service.description : service.tagline}
         </p>
-        <Button asChild variant="whatsapp" className="mt-5 w-full">
+        <Button asChild variant="default" className="mt-5 w-full">
           <a
             href={whatsappLink(`Hi, I'm interested in ${service.name}`)}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Enquire on WhatsApp
+            Get quote
           </a>
         </Button>
       </div>
