@@ -77,13 +77,46 @@ function Home() {
           </div>
         </div>
 
-        <div className="glass-strong rise overflow-hidden rounded-[2.5rem] p-3">
-          <img
-            src={heroImage}
-            alt="Warm modern living room interior designed by DN Design Studio in Vijayawada"
-            className="h-[380px] w-full rounded-[2rem] object-cover md:h-[520px]"
-            loading="eager"
-          />
+        {/* Auto-scrolling service banner beside hero copy */}
+        <div className="glass-strong marquee-hover rise overflow-hidden rounded-[2.5rem] p-3">
+          <div className="relative h-[380px] overflow-hidden rounded-[2rem] md:h-[520px]">
+            <div className="animate-marquee flex h-full w-max items-stretch gap-4 pr-4">
+              {[...SERVICES, ...SERVICES].map((service, i) => (
+                <figure
+                  key={`${service.slug}-${i}`}
+                  aria-hidden={i >= SERVICES.length}
+                  className="group relative h-full w-64 shrink-0 overflow-hidden rounded-[1.5rem] md:w-72"
+                >
+                  <img
+                    src={service.image}
+                    alt={i < SERVICES.length ? service.name : ""}
+                    width={1024}
+                    height={768}
+                    loading={i < 2 ? "eager" : "lazy"}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+                  <figcaption className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-4">
+                    <span className="font-display text-base font-bold leading-snug text-white">
+                      {service.name}
+                    </span>
+                    <span className="text-xs leading-relaxed text-white/80">
+                      {service.tagline}
+                    </span>
+                    <a
+                      href={whatsappLink(`Hi, I'm interested in ${service.name}`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      tabIndex={i >= SERVICES.length ? -1 : undefined}
+                      className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+                    >
+                      Get quote
+                    </a>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
