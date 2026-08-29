@@ -18,6 +18,7 @@ import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { HomeCursor } from "@/components/HomeCursor";
 import { IntroOverlay } from "@/components/IntroOverlay";
 import { RouteLoader } from "@/components/RouteLoader";
+import { ColumnGridOverlay } from "@/components/ColumnGridOverlay";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE } from "@/lib/site";
 
