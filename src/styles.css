@@ -100,10 +100,11 @@
   --gradient-canvas: linear-gradient(
     180deg,
     oklch(0.995 0.004 60) 0%,
-    oklch(0.975 0.014 40) 32%,
-    oklch(0.905 0.055 24) 66%,
-    oklch(0.79 0.115 22) 100%
+    oklch(0.982 0.011 42) 38%,
+    oklch(0.952 0.03 28) 72%,
+    oklch(0.9 0.062 22) 100%
   );
+
   --gradient-primary: linear-gradient(
     135deg,
     oklch(0.7 0.15 28) 0%,
