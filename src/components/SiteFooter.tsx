@@ -22,9 +22,10 @@ export function SiteFooter() {
               href={SITE.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary-soft px-4 py-2 text-sm font-semibold text-primary transition-transform hover:-translate-y-0.5"
+              aria-label="Instagram"
+              className="mt-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-soft text-primary transition-transform hover:-translate-y-0.5"
             >
-              <Instagram className="h-4 w-4" /> @dn_designstudio.vja
+              <Instagram className="h-5 w-5" />
             </a>
           </div>
 
