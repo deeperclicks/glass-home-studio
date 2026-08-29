@@ -5,6 +5,7 @@ import heroImage from "@/assets/hero.jpg";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TrustStrip } from "@/components/TrustStrip";
+import { ReviewsPreview } from "@/components/ReviewsPreview";
 import { SERVICES, SITE, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
