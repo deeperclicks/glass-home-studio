@@ -168,17 +168,20 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="canvas-gradient relative min-h-screen bg-fixed">
-        <IntroOverlay />
-        <RouteLoader />
-        <HomeCursor />
-        {!isAdmin && <SiteHeader />}
-        <main className={isAdmin ? "" : "pt-24 md:pt-28"}>
-          {/* Required: nested routes render here. */}
-          <Outlet />
-        </main>
-        {!isAdmin && <SiteFooter />}
-        {!isAdmin && <WhatsAppFab />}
-        <Toaster position="top-center" richColors />
+        <ColumnGridOverlay />
+        <div className="relative z-10">
+          <IntroOverlay />
+          <RouteLoader />
+          <HomeCursor />
+          {!isAdmin && <SiteHeader />}
+          <main className={isAdmin ? "" : "pt-24 md:pt-28"}>
+            {/* Required: nested routes render here. */}
+            <Outlet />
+          </main>
+          {!isAdmin && <SiteFooter />}
+          {!isAdmin && <WhatsAppFab />}
+          <Toaster position="top-center" richColors />
+        </div>
       </div>
     </QueryClientProvider>
   );
