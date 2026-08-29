@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/dn-logo.png";
 import { SITE } from "@/lib/site";
 
@@ -42,11 +42,6 @@ export function SiteFooter() {
               <li>
                 <a href={`tel:+${SITE.phoneSecondaryRaw}`} className="inline-flex items-center gap-2 hover:text-primary">
                   <Phone className="h-4 w-4 text-primary" /> {SITE.phoneSecondary}
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${SITE.email}`} className="inline-flex items-center gap-2 hover:text-primary">
-                  <Mail className="h-4 w-4 text-primary" /> {SITE.email}
                 </a>
               </li>
               <li>
