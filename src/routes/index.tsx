@@ -48,8 +48,8 @@ function Home() {
             <Sparkles className="h-3.5 w-3.5" /> Interior studio · {SITE.city}
           </span>
           <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.03] md:text-6xl">
-            Homes designed in <span className="text-gradient">3D</span> before a single
-            nail goes in
+            Homes designed in <span className="text-gradient">3D</span> before a{" "}
+            <em>single nail</em> goes in
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
             {SITE.name} is a boutique studio designing and building warm, practical homes across{" "}
@@ -126,7 +126,7 @@ function Home() {
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">What we do</p>
             <h2 className="mt-3 font-display text-3xl font-extrabold md:text-4xl">
-              Six ways we shape a home
+              Six ways we <em>shape a home</em>
             </h2>
           </div>
           <div className="flex gap-2">
@@ -170,7 +170,7 @@ function Home() {
 
         <div className="glass-strong rounded-[2.5rem] px-7 py-12 text-center md:px-14 md:py-16">
           <h2 className="font-display text-3xl font-extrabold md:text-4xl">
-            Tell us about your home
+            Tell us about <em>your home</em>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
             Share your floor plan, your budget and how you like to live. We'll come back with honest,
