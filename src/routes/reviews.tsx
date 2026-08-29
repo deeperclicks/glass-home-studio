@@ -38,7 +38,7 @@ function ReviewsPage() {
       <section className="mx-auto max-w-3xl py-14 text-center md:py-20">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Reviews</p>
         <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] md:text-6xl">
-          What our families say
+          What our <em>families say</em>
         </h1>
         <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
           We'd rather let the people whose homes we've finished do the talking.
