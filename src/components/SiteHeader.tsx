@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/dn-logo.png";
+import logoAsset from "@/assets/dn-logo.png.asset.json";
+
+const logo = logoAsset.url;
 import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
@@ -27,9 +29,6 @@ export function SiteHeader() {
           <img src={logo} alt="DN Design Studio Home Interiors logo" width={40} height={40} className="h-9 w-9" />
           <span className="font-display text-base font-bold leading-none tracking-tight md:text-lg">
             DN Design Studio
-            <span className="block text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Home Interiors
-            </span>
           </span>
         </Link>
 
