@@ -14,10 +14,10 @@ export function IntroOverlay() {
       setPhase("done");
       return;
     }
-    const t1 = setTimeout(() => setPhase("sofa"), 550);
-    const t2 = setTimeout(() => setPhase("text"), 1050);
-    const t3 = setTimeout(() => setPhase("out"), 1750);
-    const t4 = setTimeout(() => setPhase("done"), 2300);
+    const t1 = setTimeout(() => setPhase("sofa"), 450);
+    const t2 = setTimeout(() => setPhase("text"), 850);
+    const t3 = setTimeout(() => setPhase("out"), 1650);
+    const t4 = setTimeout(() => setPhase("done"), 2200);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
