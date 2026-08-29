@@ -272,6 +272,19 @@
   }
 }
 
+/* ---------- Full-page vertical column grid ---------- */
+
+.column-grid-overlay {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent calc(100% / 8 - 1px),
+    oklch(0.32 0.01 25 / 0.09) calc(100% / 8 - 1px),
+    oklch(0.32 0.01 25 / 0.09) calc(100% / 8)
+  );
+  background-size: 100% 100%;
+}
+
 /* ---------- Custom cursor (desktop pointer devices only) ---------- */
 
 @media (pointer: fine) {
