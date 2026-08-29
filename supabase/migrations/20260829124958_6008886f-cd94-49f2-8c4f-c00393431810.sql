@@ -1,0 +1,5 @@
+INSERT INTO public.reviews (name, rating, body, images, video_url, sort_order, published)
+VALUES
+('Bolli Jagadeesh', 5, 'We got our 2BHK flat done with DN Design Studio and it turned out beautiful and peaceful to live in. What surprised us most was how affordable it was — the work was handled by their carpenter team and the finish still looks premium. Very happy with how our home came together.', '{}', NULL, 0, true),
+('Manikanta Prudhvi', 5, 'They completed our home theater exactly on schedule. The team is very friendly to work with and they have a great sense for choosing the right colors for a space. The room feels exactly the way we imagined it.', '{}', NULL, 1, true),
+('Chaithanya Chaithu', 5, 'For our 3BHK, the founder and his team took time upfront to understand our taste and how each room would actually be used by our family. That attention to detail shows in every corner of the house.', '{}', NULL, 2, true);
