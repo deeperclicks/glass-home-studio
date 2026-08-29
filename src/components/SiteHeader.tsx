@@ -26,7 +26,7 @@ export function SiteHeader() {
         }`}
       >
         <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <img src={logo} alt="DN Design Studio Home Interiors logo" width={40} height={40} className="h-9 w-9" />
+          <img src={logo} alt="DN Design Studio Home Interiors logo" width={32} height={40} className="h-10 w-auto" />
           <span className="font-display text-base font-bold leading-none tracking-tight md:text-lg">
             DN Design Studio
           </span>
