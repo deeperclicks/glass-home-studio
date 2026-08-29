@@ -1,37 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, MapPin, Phone } from "lucide-react";
-import logoAsset from "@/assets/dn-logo.png.asset.json";
-
-const logo = logoAsset.url;
 import { SITE } from "@/lib/site";
 
 export function SiteFooter() {
   return (
   <footer className="mt-24 px-4 pb-8 md:px-6">
       <div className="glass-strong mx-auto max-w-6xl rounded-[2.5rem] p-8 md:p-12">
-        <div className="group cursor-default overflow-hidden pb-8 md:pb-10">
-          <p className="wordmark-shimmer font-display text-[clamp(2.2rem,9.5vw,6.8rem)] font-bold leading-[0.9] tracking-[-0.04em] break-words">
-            DN Design Studio Home Interiors
-          </p>
-        </div>
-
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr]">
           <div>
-            <img
-              src={logo}
-              alt="DN Design Studio Home Interiors logo"
-              width={72}
-              height={72}
-              loading="lazy"
-              className="h-16 w-16 origin-left transition-transform duration-500 ease-out hover:scale-125"
-            />
-            <h2 className="mt-4 font-display text-xl font-bold">{SITE.name}</h2>
             <a
               href={SITE.instagram}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="mt-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-soft text-primary transition-transform hover:-translate-y-0.5"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-soft text-primary transition-transform hover:-translate-y-0.5"
             >
               <Instagram className="h-5 w-5" />
             </a>
