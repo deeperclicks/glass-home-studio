@@ -26,6 +26,8 @@ function StudioLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [mode, setMode] = useState<"signin" | "signup">("signin");
+
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
