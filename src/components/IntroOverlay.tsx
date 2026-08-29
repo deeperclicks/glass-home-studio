@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 import { HomeMark, SofaMark } from "./BrandMarks";
 
-/** ~2s branded reveal played once per page load, before the hero appears. */
+type Phase = "home" | "sofa" | "text" | "out" | "done";
+
+/** ~2.3s branded reveal: home icon → sofa → "DN Design Studio", then wipe away. */
 export function IntroOverlay() {
-  const [phase, setPhase] = useState<"in" | "out" | "done">("in");
+  const [phase, setPhase] = useState<Phase>("home");
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -11,11 +14,15 @@ export function IntroOverlay() {
       setPhase("done");
       return;
     }
-    const t1 = setTimeout(() => setPhase("out"), 1700);
-    const t2 = setTimeout(() => setPhase("done"), 2300);
+    const t1 = setTimeout(() => setPhase("sofa"), 550);
+    const t2 = setTimeout(() => setPhase("text"), 1050);
+    const t3 = setTimeout(() => setPhase("out"), 1750);
+    const t4 = setTimeout(() => setPhase("done"), 2300);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
     };
   }, []);
 
@@ -40,16 +47,47 @@ export function IntroOverlay() {
           : { opacity: 1, clipPath: "inset(0 0 0 0)" }
       }
     >
-      <div className="flex flex-col items-center gap-5 text-primary">
-        <div className="flex items-end gap-4">
-          <SofaMark className="h-16 w-20 md:h-20 md:w-24" />
-          <HomeMark className="h-14 w-14 opacity-0 md:h-16 md:w-16 [animation:rise-in_0.5s_ease_0.5s_forwards]" />
-        </div>
-        <p
-          className="font-display text-2xl font-semibold tracking-tight text-foreground opacity-0 md:text-3xl [animation:rise-in_0.6s_cubic-bezier(0.22,1,0.36,1)_1s_forwards]"
+      <div className="relative flex h-40 w-full max-w-2xl items-center justify-center px-8">
+        {/* Phase 1: Home icon */}
+        <div
+          className={cn(
+            "absolute flex flex-col items-center transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            phase === "home"
+              ? "opacity-100 scale-100 rotate-0 blur-0"
+              : "opacity-0 scale-125 -rotate-12 blur-sm",
+          )}
         >
-          DN Design Studio
-        </p>
+          <HomeMark animate={false} className="h-16 w-16 text-primary md:h-20 md:w-20" />
+        </div>
+
+        {/* Phase 2: Sofa icon */}
+        <div
+          className={cn(
+            "absolute flex flex-col items-center transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            phase === "sofa"
+              ? "opacity-100 scale-100 blur-0"
+              : "opacity-0 scale-90 blur-sm",
+            phase === "home" ? "scale-75" : "",
+          )}
+        >
+          <SofaMark animate={false} className="h-16 w-20 text-primary md:h-20 md:w-24" />
+        </div>
+
+        {/* Phase 3: Brand name with frosted glass backdrop */}
+        <div
+          className={cn(
+            "absolute flex flex-col items-center transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            phase === "text" || phase === "out"
+              ? "opacity-100 translate-y-0 blur-0"
+              : "opacity-0 translate-y-4 blur-md",
+          )}
+        >
+          <div className="glass-strong rounded-[2rem] px-8 py-4 md:px-10 md:py-5">
+            <p className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+              DN Design Studio
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
