@@ -163,6 +163,9 @@ function Home() {
         </div>
       </section>
 
+      {/* Our work preview */}
+      <WorkPreview />
+
       {/* Reviews preview */}
       <ReviewsPreview />
 
