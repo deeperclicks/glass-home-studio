@@ -41,7 +41,7 @@ export const SERVICES: Service[] = [
     name: "Full Home 3D Design Services",
     tagline: "See your entire home in photorealistic 3D before construction begins.",
     description:
-      "Walk through every room of your home long before the first nail goes in. We model your actual floor plan, light it the way your windows really face, and render it in photorealistic detail so you can change your mind on paper instead of on site. Most families finalise their whole home in two or three review rounds with us.",
+      "Walk through your future home in photorealistic 3D before construction starts. We model your actual floor plan and real lighting so you can refine every detail early. Most families finalise the whole design in just two or three review rounds.",
     price: "from ₹15,000",
     image: service3dAsset.url,
   },
@@ -50,7 +50,7 @@ export const SERVICES: Service[] = [
     name: "Full Home Interiors",
     tagline: "Complete design and execution for your whole home, start to finish.",
     description:
-      "One studio, one drawing set, one accountable team for every room in the house. We handle layout, joinery, finishes, furniture, soft furnishings and the site work that ties it together, so the palette in your bedroom quietly agrees with the one in your living room. You get a home that feels considered, not assembled.",
+      "One studio handles layout, joinery, finishes, furniture and site work for your entire home. Every room is designed as part of a single, cohesive vision. You get a considered home, not an assembled one.",
     image: serviceFullHome,
   },
   {
@@ -58,7 +58,7 @@ export const SERVICES: Service[] = [
     name: "Modular Kitchen",
     tagline: "Smart, space-efficient kitchens built around how you cook and live.",
     description:
-      "An Indian kitchen has to survive tempering, grinding and everyday chaos, so we design ours around real cooking. Deep pull-outs where the masalas go, ventilation planned before the false ceiling, and hardware we would put in our own homes. Every centimetre of storage is drawn to your utensils, not to a catalogue.",
+      "Indian kitchens built for real daily cooking — deep pull-outs, smart ventilation and durable hardware. Every storage detail is drawn around your utensils and workflow. Designed to survive tempering, grinding and everyday chaos.",
     image: serviceKitchen,
   },
   {
@@ -66,7 +66,7 @@ export const SERVICES: Service[] = [
     name: "Modern Living & Bedroom Designing",
     tagline: "Contemporary living rooms and bedrooms designed around your daily life.",
     description:
-      "Your living room hosts family on Sundays and quiet evenings on weekdays, and your bedroom has to switch off the day. We design both with warm, restrained material palettes, generous storage that disappears into the walls, and lighting layers you can dial down at night.",
+      "Living rooms and bedrooms designed for both lively family time and quiet rest. Warm palettes, hidden storage and layered lighting set the mood. Spaces that adapt to your day and night.",
     image: serviceBedroom,
   },
   {
@@ -74,7 +74,7 @@ export const SERVICES: Service[] = [
     name: "Fall Ceiling & Lighting",
     tagline: "Custom ceilings and layered lighting that transform any room's mood.",
     description:
-      "Ceilings are the one surface nobody decorates and everybody notices. We design profiles, coves and pelmets that suit your slab height, then layer ambient, task and accent lighting so a single room can feel bright at breakfast and soft at midnight. Wiring and dimming are planned with the design, never after it.",
+      "Custom ceiling profiles, coves and pelmets tailored to your room height. We layer ambient, task and accent lighting so the same space feels bright by morning and soft after dark. Wiring and dimming are planned with the design, never after it.",
     image: serviceCeiling,
   },
   {
@@ -82,7 +82,7 @@ export const SERVICES: Service[] = [
     name: "End-to-End Interiors",
     tagline: "One team, one point of contact, from first sketch to final handover.",
     description:
-      "Design, procurement, carpentry, electrical, painting and final styling, coordinated by one person you can call. We keep a written schedule, share site photographs as work progresses, and hand over a home that is clean, tested and ready to move into. No chasing five different vendors.",
+      "Design, procurement, carpentry, electrical, painting and styling under one accountable team. We share schedules, site updates and clear timelines throughout. Move into a clean, tested home without chasing multiple vendors.",
     image: serviceEndToEnd,
   },
 ];
