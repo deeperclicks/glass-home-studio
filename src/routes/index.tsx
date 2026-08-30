@@ -33,6 +33,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const services = useServices();
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scrollBy = (dir: -1 | 1) => {
