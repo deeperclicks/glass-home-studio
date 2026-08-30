@@ -18,6 +18,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StudioLoginRouteImport } from './routes/studio-login'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as OurWorkIndexRouteImport } from './routes/our-work.index'
+import { Route as OurWorkSlugRouteImport } from './routes/our-work.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -63,6 +64,11 @@ const OurWorkIndexRoute = OurWorkIndexRouteImport.update({
   path: '/',
   getParentRoute: () => OurWorkRoute,
 } as any)
+const OurWorkSlugRoute = OurWorkSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => OurWorkRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/studio-login': typeof StudioLoginRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/our-work/$slug': typeof OurWorkSlugRoute
   '/our-work/': typeof OurWorkIndexRoute
 }
 export interface FileRoutesByTo {
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/studio-login': typeof StudioLoginRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/our-work/$slug': typeof OurWorkSlugRoute
   '/our-work': typeof OurWorkIndexRoute
 }
 export interface FileRoutesById {
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/studio-login': typeof StudioLoginRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/our-work/$slug': typeof OurWorkSlugRoute
   '/our-work/': typeof OurWorkIndexRoute
 }
 export interface FileRouteTypes {
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/studio-login'
     | '/admin'
+    | '/our-work/$slug'
     | '/our-work/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/studio-login'
     | '/admin'
+    | '/our-work/$slug'
     | '/our-work'
   id:
     | '__root__'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/studio-login'
     | '/_authenticated/admin'
+    | '/our-work/$slug'
     | '/our-work/'
   fileRoutesById: FileRoutesById
 }
@@ -203,6 +215,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OurWorkIndexRouteImport
       parentRoute: typeof OurWorkRoute
     }
+    '/our-work/$slug': {
+      id: '/our-work/$slug'
+      path: '/$slug'
+      fullPath: '/our-work/$slug'
+      preLoaderRoute: typeof OurWorkSlugRouteImport
+      parentRoute: typeof OurWorkRoute
+    }
   }
 }
 
@@ -218,10 +237,12 @@ const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface OurWorkRouteChildren {
+  OurWorkSlugRoute: typeof OurWorkSlugRoute
   OurWorkIndexRoute: typeof OurWorkIndexRoute
 }
 
 const OurWorkRouteChildren: OurWorkRouteChildren = {
+  OurWorkSlugRoute: OurWorkSlugRoute,
   OurWorkIndexRoute: OurWorkIndexRoute,
 }
 
