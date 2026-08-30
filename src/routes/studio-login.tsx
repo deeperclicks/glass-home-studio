@@ -65,7 +65,7 @@ function StudioLogin() {
   return (
     <div className="flex min-h-[70vh] items-center justify-center px-4">
       <div className="glass-strong w-full max-w-md rounded-[2.5rem] p-9">
-        <h1 className="font-display text-2xl font-bold">
+        <h1 className="font-display text-xl font-bold">
           {mode === "signin" ? "Studio Login" : "Create studio account"}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
