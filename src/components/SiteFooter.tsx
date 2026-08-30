@@ -9,7 +9,7 @@ export function SiteFooter() {
   return (
   <footer className="mt-24 px-4 pb-8 md:px-6">
       <div className="glass-strong group mx-auto max-w-6xl rounded-[2.5rem] p-8 md:p-12">
-        <div className="wordmark-shimmer font-display text-[clamp(2.5rem,8vw,6.5rem)] font-semibold leading-[0.9] tracking-tight">
+        <div className="wordmark-shimmer font-display text-[clamp(1.875rem,7.5vw,5.875rem)] font-semibold leading-[0.9] tracking-tight">
           {SITE.name}
         </div>
 
