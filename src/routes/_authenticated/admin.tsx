@@ -13,6 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ImageUploader } from "@/components/admin/ImageUploader";
 import { SERVICES } from "@/lib/site";
+import { ServicesPanel } from "@/components/admin/ServicesPanel";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -102,6 +103,9 @@ function AdminPage() {
               <TabsTrigger value="projects" className="rounded-full">
                 Blog &amp; Our Work
               </TabsTrigger>
+              <TabsTrigger value="services" className="rounded-full">
+                Services
+              </TabsTrigger>
               <TabsTrigger value="reviews" className="rounded-full">
                 Reviews
               </TabsTrigger>
@@ -111,6 +115,9 @@ function AdminPage() {
             </TabsList>
             <TabsContent value="projects" className="mt-6">
               <PostsPanel />
+            </TabsContent>
+            <TabsContent value="services" className="mt-6">
+              <ServicesPanel />
             </TabsContent>
             <TabsContent value="reviews" className="mt-6">
               <ReviewsPanel />

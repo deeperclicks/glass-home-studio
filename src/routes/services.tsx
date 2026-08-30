@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TrustStrip } from "@/components/TrustStrip";
-import { SERVICES, SITE, whatsappLink } from "@/lib/site";
+import { SITE, whatsappLink } from "@/lib/site";
+import { useServices } from "@/lib/services";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/services")({
@@ -27,6 +28,7 @@ export const Route = createFileRoute("/services")({
 });
 
 function ServicesPage() {
+  const services = useServices();
   return (
     <div className="px-4 pb-8 md:px-6">
       <section className="mx-auto max-w-3xl py-14 text-center md:py-20">
@@ -41,7 +43,7 @@ function ServicesPage() {
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {SERVICES.map((s) => (
+        {services.map((s) => (
           <ServiceCard key={s.slug} service={s} long />
         ))}
       </section>
