@@ -7,7 +7,8 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { TrustStrip } from "@/components/TrustStrip";
 import { ReviewsPreview } from "@/components/ReviewsPreview";
 import { WorkPreview } from "@/components/WorkPreview";
-import { SERVICES, SITE, whatsappLink } from "@/lib/site";
+import { SITE, whatsappLink } from "@/lib/site";
+import { useServices } from "@/lib/services";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,6 +33,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const services = useServices();
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scrollBy = (dir: -1 | 1) => {
@@ -82,15 +84,15 @@ function Home() {
         <div className="glass-strong marquee-hover rise overflow-hidden rounded-[2.5rem] p-3">
           <div className="relative h-[380px] overflow-hidden rounded-[2rem] md:h-[520px]">
             <div className="animate-marquee flex h-full w-max items-stretch gap-4 pr-4">
-              {[...SERVICES, ...SERVICES].map((service, i) => (
+              {[...services, ...services].map((service, i) => (
                 <figure
                   key={`${service.slug}-${i}`}
-                  aria-hidden={i >= SERVICES.length}
+                  aria-hidden={i >= services.length}
                   className="group relative h-full w-64 shrink-0 overflow-hidden rounded-[1.5rem] md:w-72"
                 >
                   <img
                     src={service.image}
-                    alt={i < SERVICES.length ? service.name : ""}
+                    alt={i < services.length ? service.name : ""}
                     width={1024}
                     height={768}
                     loading={i < 2 ? "eager" : "lazy"}
@@ -108,7 +110,7 @@ function Home() {
                       href={whatsappLink(`Hi, I'm interested in ${service.name}`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      tabIndex={i >= SERVICES.length ? -1 : undefined}
+                      tabIndex={i >= services.length ? -1 : undefined}
                       className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
                     >
                       Get quote
@@ -144,7 +146,7 @@ function Home() {
           ref={trackRef}
           className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {SERVICES.map((service) => (
+          {services.map((service) => (
             <div
               key={service.slug}
               className="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-[calc(33.333%-0.9rem)]"
