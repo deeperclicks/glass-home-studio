@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
     description:
       "Walk through every room of your home long before the first nail goes in. We model your actual floor plan, light it the way your windows really face, and render it in photorealistic detail so you can change your mind on paper instead of on site. Most families finalise their whole home in two or three review rounds with us.",
     price: "from ₹15,000",
-    image: service3d,
+    image: service3dAsset.url,
   },
   {
     slug: "full-home-interiors",
