@@ -1,4 +1,4 @@
-import service3d from "@/assets/service-3d.jpg";
+import service3dAsset from "@/assets/service-3d.png.asset.json";
 import serviceFullHome from "@/assets/service-fullhome.jpg";
 import serviceKitchen from "@/assets/service-kitchen.jpg";
 import serviceBedroom from "@/assets/service-bedroom.jpg";
