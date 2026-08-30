@@ -54,6 +54,8 @@ export type Database = {
         Row: {
           after_image: string | null
           before_image: string | null
+          client_name: string
+          client_rating: number | null
           content: string
           cover_image: string | null
           created_at: string
@@ -63,6 +65,7 @@ export type Database = {
           id: string
           is_project: boolean
           published: boolean
+          service: string
           slug: string
           sort_order: number
           title: string
@@ -71,6 +74,8 @@ export type Database = {
         Insert: {
           after_image?: string | null
           before_image?: string | null
+          client_name?: string
+          client_rating?: number | null
           content?: string
           cover_image?: string | null
           created_at?: string
@@ -80,6 +85,7 @@ export type Database = {
           id?: string
           is_project?: boolean
           published?: boolean
+          service?: string
           slug: string
           sort_order?: number
           title: string
@@ -88,6 +94,8 @@ export type Database = {
         Update: {
           after_image?: string | null
           before_image?: string | null
+          client_name?: string
+          client_rating?: number | null
           content?: string
           cover_image?: string | null
           created_at?: string
@@ -97,6 +105,7 @@ export type Database = {
           id?: string
           is_project?: boolean
           published?: boolean
+          service?: string
           slug?: string
           sort_order?: number
           title?: string

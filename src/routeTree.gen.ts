@@ -17,6 +17,8 @@ import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StudioLoginRouteImport } from './routes/studio-login'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as OurWorkIndexRouteImport } from './routes/our-work.index'
+import { Route as OurWorkSlugRouteImport } from './routes/our-work.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -57,35 +59,50 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const OurWorkIndexRoute = OurWorkIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => OurWorkRoute,
+} as any)
+const OurWorkSlugRoute = OurWorkSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => OurWorkRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/our-work': typeof OurWorkRoute
+  '/our-work': typeof OurWorkRouteWithChildren
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
   '/studio-login': typeof StudioLoginRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/our-work/$slug': typeof OurWorkSlugRoute
+  '/our-work/': typeof OurWorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/our-work': typeof OurWorkRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
   '/studio-login': typeof StudioLoginRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/our-work/$slug': typeof OurWorkSlugRoute
+  '/our-work': typeof OurWorkIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/contact': typeof ContactRoute
-  '/our-work': typeof OurWorkRoute
+  '/our-work': typeof OurWorkRouteWithChildren
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
   '/studio-login': typeof StudioLoginRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/our-work/$slug': typeof OurWorkSlugRoute
+  '/our-work/': typeof OurWorkIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -97,15 +114,18 @@ export interface FileRouteTypes {
     | '/services'
     | '/studio-login'
     | '/admin'
+    | '/our-work/$slug'
+    | '/our-work/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contact'
-    | '/our-work'
     | '/reviews'
     | '/services'
     | '/studio-login'
     | '/admin'
+    | '/our-work/$slug'
+    | '/our-work'
   id:
     | '__root__'
     | '/'
@@ -116,13 +136,15 @@ export interface FileRouteTypes {
     | '/services'
     | '/studio-login'
     | '/_authenticated/admin'
+    | '/our-work/$slug'
+    | '/our-work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   ContactRoute: typeof ContactRoute
-  OurWorkRoute: typeof OurWorkRoute
+  OurWorkRoute: typeof OurWorkRouteWithChildren
   ReviewsRoute: typeof ReviewsRoute
   ServicesRoute: typeof ServicesRoute
   StudioLoginRoute: typeof StudioLoginRoute
@@ -186,6 +208,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/our-work/': {
+      id: '/our-work/'
+      path: '/'
+      fullPath: '/our-work/'
+      preLoaderRoute: typeof OurWorkIndexRouteImport
+      parentRoute: typeof OurWorkRoute
+    }
+    '/our-work/$slug': {
+      id: '/our-work/$slug'
+      path: '/$slug'
+      fullPath: '/our-work/$slug'
+      preLoaderRoute: typeof OurWorkSlugRouteImport
+      parentRoute: typeof OurWorkRoute
+    }
   }
 }
 
@@ -200,11 +236,24 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface OurWorkRouteChildren {
+  OurWorkSlugRoute: typeof OurWorkSlugRoute
+  OurWorkIndexRoute: typeof OurWorkIndexRoute
+}
+
+const OurWorkRouteChildren: OurWorkRouteChildren = {
+  OurWorkSlugRoute: OurWorkSlugRoute,
+  OurWorkIndexRoute: OurWorkIndexRoute,
+}
+
+const OurWorkRouteWithChildren =
+  OurWorkRoute._addFileChildren(OurWorkRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   ContactRoute: ContactRoute,
-  OurWorkRoute: OurWorkRoute,
+  OurWorkRoute: OurWorkRouteWithChildren,
   ReviewsRoute: ReviewsRoute,
   ServicesRoute: ServicesRoute,
   StudioLoginRoute: StudioLoginRoute,

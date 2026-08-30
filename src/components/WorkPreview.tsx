@@ -51,9 +51,11 @@ export function WorkPreview() {
             const isSlider = Boolean(p.featured && before && after);
 
             return (
-              <article
+              <Link
                 key={p.id}
-                className="glass-tint group overflow-hidden rounded-[2rem] transition-transform duration-500 hover:-translate-y-1.5"
+                to="/our-work/$slug"
+                params={{ slug: p.slug }}
+                className="glass-tint group block overflow-hidden rounded-[2rem] transition-transform duration-500 hover:-translate-y-1.5"
               >
                 {isSlider ? (
                   <BeforeAfter before={before!} after={after!} alt={p.title} />
@@ -78,7 +80,7 @@ export function WorkPreview() {
                     </p>
                   )}
                 </div>
-              </article>
+              </Link>
             );
           })}
         </div>
