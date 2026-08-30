@@ -77,7 +77,7 @@ function ContactPage() {
         `Phone: ${parsed.data.phone}`,
         `City: ${parsed.data.city}`,
         `Service: ${parsed.data.service}`,
-        `Budget: ${formatBudget(parsed.data.budget)}`,
+        `Budget: ₹${parsed.data.budget.toLocaleString("en-IN")}`,
         parsed.data.message ? `Note: ${parsed.data.message}` : "",
       ]
         .filter(Boolean)
