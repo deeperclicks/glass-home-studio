@@ -17,6 +17,9 @@ export type Post = {
   sort_order: number;
   published: boolean;
   created_at: string;
+  service: string;
+  client_name: string;
+  client_rating: number | null;
 };
 
 export type Review = {
