@@ -31,7 +31,7 @@ function ServicesPage() {
     <div className="px-4 pb-8 md:px-6">
       <section className="mx-auto max-w-3xl py-14 text-center md:py-20">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">What we do</p>
-        <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] md:text-6xl">
+        <h1 className="mt-4 font-display text-3xl font-extrabold leading-[1.05] md:text-5xl">
           Six ways we <em>shape a home</em>
         </h1>
         <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -51,7 +51,7 @@ function ServicesPage() {
       </section>
 
       <section className="glass-strong mx-auto mt-16 max-w-4xl rounded-[2.5rem] p-10 text-center md:p-14">
-        <h2 className="font-display text-2xl font-bold md:text-3xl">Not sure where to start?</h2>
+        <h2 className="font-display text-xl font-bold md:text-2xl">Not sure where to start?</h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
           Send us your floor plan on WhatsApp. We'll tell you honestly what's worth doing first, and
           what can wait.

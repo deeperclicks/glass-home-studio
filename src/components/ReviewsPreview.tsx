@@ -23,7 +23,7 @@ export function ReviewsPreview() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Reviews</p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold md:text-4xl">
+          <h2 className="mt-3 font-display text-2xl font-extrabold md:text-3xl">
             {SITE.rating}★ from {SITE.reviewCount}+ families
           </h2>
         </div>
