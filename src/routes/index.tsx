@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TrustStrip } from "@/components/TrustStrip";
 import { ReviewsPreview } from "@/components/ReviewsPreview";
+import { WorkPreview } from "@/components/WorkPreview";
 import { SERVICES, SITE, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -161,6 +162,9 @@ function Home() {
           </Button>
         </div>
       </section>
+
+      {/* Our work preview */}
+      <WorkPreview />
 
       {/* Reviews preview */}
       <ReviewsPreview />
