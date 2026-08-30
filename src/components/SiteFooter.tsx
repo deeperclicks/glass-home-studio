@@ -18,9 +18,9 @@ export function SiteFooter() {
             <img
               src={logo}
               alt="DN Design Studio Home Interiors logo"
-              width={72}
-              height={90}
-              className="h-20 w-auto"
+              width={88}
+              height={112}
+              className="h-24 w-auto drop-shadow-[0_2px_10px_rgba(234,88,93,0.45)]"
             />
             <a
               href={SITE.instagram}
