@@ -162,25 +162,20 @@ function ContactPage() {
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <div className="flex items-baseline justify-between">
-                  <Label htmlFor="budget">Budget range</Label>
-                  <span className="font-display text-sm font-bold text-primary">
-                    {formatBudget(budget)}
-                  </span>
-                </div>
-                <Slider
+              <div className="space-y-2">
+                <Label htmlFor="budget">Your budget (₹)</Label>
+                <Input
                   id="budget"
-                  min={5000}
-                  max={100000}
-                  step={5000}
-                  value={[budget]}
-                  onValueChange={(v) => setBudget(v[0] ?? 5000)}
+                  name="budget"
+                  type="number"
+                  min={1000}
+                  step={1000}
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  placeholder="Enter amount, e.g. 250000"
+                  required
                 />
-                <div className="flex justify-between text-[11px] text-muted-foreground">
-                  <span>₹5,000</span>
-                  <span>₹1,00,000+</span>
-                </div>
+                {errors["budget"] && <p className="text-xs text-destructive">{errors["budget"]}</p>}
               </div>
 
               <div className="space-y-2">
