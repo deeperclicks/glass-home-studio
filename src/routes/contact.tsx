@@ -56,7 +56,7 @@ function ContactPage() {
       phone: String(fd.get("phone") ?? ""),
       city: String(fd.get("city") ?? ""),
       service,
-      budget,
+      budget: Number(budget || 0),
       message: String(fd.get("message") ?? ""),
       consent,
     };
