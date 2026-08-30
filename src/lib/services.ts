@@ -45,7 +45,7 @@ export function toService(row: ServiceRow, media: Record<string, string>): Servi
     name: row.name,
     tagline: row.tagline,
     description: row.description,
-    price: row.price || undefined,
+    ...(row.price ? { price: row.price } : {}),
     image: (row.image ? media[row.image] : undefined) ?? FALLBACK_IMAGES[row.slug] ?? SERVICES[0]!.image,
   };
 }
