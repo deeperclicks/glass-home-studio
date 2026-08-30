@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ImageUploader } from "@/components/admin/ImageUploader";
+import { SERVICES } from "@/lib/site";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -134,6 +135,9 @@ const emptyPost = {
   gallery: [] as string[],
   before: [] as string[],
   after: [] as string[],
+  service: "",
+  clientName: "",
+  clientRating: "",
   featured: false,
   isProject: true,
   published: true,
@@ -161,6 +165,9 @@ function PostsPanel() {
       gallery: form.gallery,
       before_image: form.before[0] ?? null,
       after_image: form.after[0] ?? null,
+      service: form.service.trim(),
+      client_name: form.clientName.trim(),
+      client_rating: form.clientRating ? Number(form.clientRating) : null,
       featured: form.featured,
       is_project: form.isProject,
       published: form.published,
@@ -215,6 +222,48 @@ function PostsPanel() {
             value={form.excerpt}
             onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
           />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="p-service">Service delivered</Label>
+          <select
+            id="p-service"
+            value={form.service}
+            onChange={(e) => setForm({ ...form, service: e.target.value })}
+            className="glass h-10 w-full rounded-xl px-3 text-sm"
+          >
+            <option value="">Select a service</option>
+            {SERVICES.map((s) => (
+              <option key={s.slug} value={s.name}>
+                {s.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+            <Label htmlFor="p-client">Client name</Label>
+            <Input
+              id="p-client"
+              value={form.clientName}
+              onChange={(e) => setForm({ ...form, clientName: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="p-rating">Client rating</Label>
+            <select
+              id="p-rating"
+              value={form.clientRating}
+              onChange={(e) => setForm({ ...form, clientRating: e.target.value })}
+              className="glass h-10 w-full rounded-xl px-3 text-sm"
+            >
+              <option value="">No rating</option>
+              {[5, 4, 3, 2, 1].map((r) => (
+                <option key={r} value={String(r)}>
+                  {r} ★
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="space-y-2">
           <Label htmlFor="p-content">Story</Label>
