@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Slider } from "@/components/ui/slider";
 import {
   Select,
   SelectContent,
@@ -40,12 +39,9 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const formatBudget = (v: number) =>
-  v >= 100000 ? "₹1,00,000+" : `₹${v.toLocaleString("en-IN")}`;
-
 function ContactPage() {
   const send = useServerFn(submitEnquiry);
-  const [budget, setBudget] = useState(25000);
+  const [budget, setBudget] = useState<string>("25000");
   const [service, setService] = useState(SERVICES[0]!.name);
   const [consent, setConsent] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -60,7 +56,7 @@ function ContactPage() {
       phone: String(fd.get("phone") ?? ""),
       city: String(fd.get("city") ?? ""),
       service,
-      budget,
+      budget: Number(budget || 0),
       message: String(fd.get("message") ?? ""),
       consent,
     };
@@ -81,7 +77,7 @@ function ContactPage() {
         `Phone: ${parsed.data.phone}`,
         `City: ${parsed.data.city}`,
         `Service: ${parsed.data.service}`,
-        `Budget: ${formatBudget(parsed.data.budget)}`,
+        `Budget: ₹${parsed.data.budget.toLocaleString("en-IN")}`,
         parsed.data.message ? `Note: ${parsed.data.message}` : "",
       ]
         .filter(Boolean)
@@ -166,25 +162,20 @@ function ContactPage() {
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <div className="flex items-baseline justify-between">
-                  <Label htmlFor="budget">Budget range</Label>
-                  <span className="font-display text-sm font-bold text-primary">
-                    {formatBudget(budget)}
-                  </span>
-                </div>
-                <Slider
+              <div className="space-y-2">
+                <Label htmlFor="budget">Your budget (₹)</Label>
+                <Input
                   id="budget"
-                  min={5000}
-                  max={100000}
-                  step={5000}
-                  value={[budget]}
-                  onValueChange={(v) => setBudget(v[0] ?? 5000)}
+                  name="budget"
+                  type="number"
+                  min={1000}
+                  step={1000}
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  placeholder="Enter amount, e.g. 250000"
+                  required
                 />
-                <div className="flex justify-between text-[11px] text-muted-foreground">
-                  <span>₹5,000</span>
-                  <span>₹1,00,000+</span>
-                </div>
+                {errors["budget"] && <p className="text-xs text-destructive">{errors["budget"]}</p>}
               </div>
 
               <div className="space-y-2">
@@ -258,6 +249,15 @@ function ContactPage() {
               className="h-72 w-full rounded-[1.6rem] border-0"
             />
           </div>
+          <Button asChild variant="outline" className="w-full">
+            <a
+              href="https://www.google.com/maps/place/DN+Design+Studio+Home+Interiors/@16.4961146,80.6585754,17z/data=!4m6!3m5!1s0x3a35fb4fa47247bf:0xda44b10b8e917e2e!8m2!3d16.4961146!4d80.6634463!16s%2Fg%2F11x2590ff0?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open in Google Maps
+            </a>
+          </Button>
         </aside>
       </div>
     </div>

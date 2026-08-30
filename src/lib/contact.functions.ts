@@ -11,7 +11,7 @@ export const contactSchema = z.object({
     .regex(/^[0-9+\-\s()]+$/, "Please enter a valid phone number"),
   city: z.string().trim().min(2, "Please enter your city").max(60),
   service: z.string().trim().min(2, "Please choose a service").max(80),
-  budget: z.number().int().min(5000).max(100000),
+  budget: z.number().int().min(1000, "Budget must be at least ₹1,000"),
   message: z.string().trim().max(1000).default(""),
   consent: z.literal(true, { errorMap: () => ({ message: "Please tick the consent box" }) }),
 });
@@ -55,8 +55,7 @@ export const submitEnquiry = createServerFn({ method: "POST" })
     const resendKey = process.env["RESEND_API_KEY"];
     if (resendKey) {
       try {
-        const budgetLabel =
-          data.budget >= 100000 ? "₹1,00,000+" : `₹${data.budget.toLocaleString("en-IN")}`;
+        const budgetLabel = `₹${data.budget.toLocaleString("en-IN")}`;
         const res = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
