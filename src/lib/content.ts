@@ -73,3 +73,24 @@ export function slugify(value: string) {
     .replace(/^-|-$/g, "")
     .slice(0, 80);
 }
+
+export const postBySlugQuery = (slug: string) =>
+  queryOptions({
+    queryKey: ["post", slug],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("posts")
+        .select("*")
+        .eq("slug", slug)
+        .eq("published", true)
+        .maybeSingle();
+      if (error) throw error;
+      if (!data) return null;
+      const post = data as Post;
+      const paths = [post.cover_image, post.before_image, post.after_image, ...post.gallery].filter(
+        Boolean,
+      ) as string[];
+      const media = await resolveMedia(paths);
+      return { post, media };
+    },
+  });
