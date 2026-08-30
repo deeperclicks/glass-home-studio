@@ -26,7 +26,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <div className="glass-strong max-w-md rounded-[2rem] p-10 text-center">
-        <h1 className="font-display text-6xl font-bold text-primary">404</h1>
+        <h1 className="font-display text-5xl font-bold text-primary">404</h1>
         <h2 className="mt-4 text-xl font-semibold">This room doesn't exist</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for has moved or was never built.
