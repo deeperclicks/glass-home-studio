@@ -99,7 +99,7 @@ function ContactPage() {
     <div className="px-4 pb-8 md:px-6">
       <section className="mx-auto max-w-3xl py-14 text-center md:py-20">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Contact us</p>
-        <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] md:text-6xl">
+        <h1 className="mt-4 font-display text-3xl font-extrabold leading-[1.05] md:text-5xl">
           Let's talk about <em>your home</em>
         </h1>
         <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -112,7 +112,7 @@ function ContactPage() {
           {done ? (
             <div className="flex flex-col items-center py-10 text-center">
               <CheckCircle2 className="h-14 w-14 text-primary" />
-              <h2 className="mt-5 font-display text-2xl font-bold">Thank you — we've got it</h2>
+              <h2 className="mt-5 font-display text-xl font-bold">Thank you — we've got it</h2>
               <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
                 Your enquiry is saved and sent to our studio inbox. A WhatsApp chat should have opened
                 with your details — send it and we'll reply there.

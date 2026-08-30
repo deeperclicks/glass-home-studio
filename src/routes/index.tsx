@@ -47,7 +47,7 @@ function Home() {
           <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold text-primary">
             <Sparkles className="h-3.5 w-3.5" /> Interior studio · {SITE.city}
           </span>
-          <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.03] md:text-6xl">
+          <h1 className="mt-6 font-display text-3xl font-extrabold leading-[1.03] md:text-5xl">
             Homes designed in <span className="text-gradient">3D</span> before a{" "}
             <em>single nail</em> goes in
           </h1>
@@ -125,7 +125,7 @@ function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">What we do</p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold md:text-4xl">
+            <h2 className="mt-3 font-display text-2xl font-extrabold md:text-3xl">
               Six ways we <em>shape a home</em>
             </h2>
           </div>
@@ -169,7 +169,7 @@ function Home() {
       <section className="mx-auto max-w-5xl py-12 md:py-20">
 
         <div className="glass-strong rounded-[2.5rem] px-7 py-12 text-center md:px-14 md:py-16">
-          <h2 className="font-display text-3xl font-extrabold md:text-4xl">
+          <h2 className="font-display text-2xl font-extrabold md:text-3xl">
             Tell us about <em>your home</em>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">

@@ -86,7 +86,7 @@ export function IntroOverlay() {
           )}
         >
           <div className="glass-strong rounded-[2rem] px-8 py-4 md:px-10 md:py-5">
-            <p className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+            <p className="font-display text-xl font-semibold tracking-tight text-foreground md:text-2xl">
               DN Design Studio
             </p>
           </div>
