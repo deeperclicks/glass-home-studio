@@ -39,12 +39,9 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const formatBudget = (v: number) =>
-  v >= 100000 ? "₹1,00,000+" : `₹${v.toLocaleString("en-IN")}`;
-
 function ContactPage() {
   const send = useServerFn(submitEnquiry);
-  const [budget, setBudget] = useState(25000);
+  const [budget, setBudget] = useState<string>("25000");
   const [service, setService] = useState(SERVICES[0]!.name);
   const [consent, setConsent] = useState(false);
   const [busy, setBusy] = useState(false);
