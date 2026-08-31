@@ -4,26 +4,48 @@ import { ArrowLeft, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { postBySlugQuery } from "@/lib/content";
+import { getRequestOrigin } from "@/lib/origin.functions";
 import { SITE, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/our-work/$slug")({
-  head: () => ({
-    meta: [
-      { title: "Project — DN Design Studio, Vijayawada" },
-      {
-        name: "description",
-        content:
-          "A closer look at one of the homes designed and executed by DN Design Studio in Vijayawada — service, gallery and the client's own words.",
-      },
-      { property: "og:title", content: "Project — DN Design Studio" },
-      {
-        property: "og:description",
-        content: "Cover shots, full gallery and client feedback from a DN Design Studio project.",
-      },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  loader: async ({ params, context }) => {
+    const [origin, data] = await Promise.all([
+      getRequestOrigin(),
+      context.queryClient.ensureQueryData(postBySlugQuery(params.slug)),
+    ]);
+    return { origin, data };
+  },
+  head: ({ params, loaderData }) => {
+    const post = loaderData?.data?.post;
+    const origin = loaderData?.origin ?? "https://dndesignstudio.in";
+    const title = post
+      ? `${post.title} — DN Design Studio, Vijayawada`
+      : "Project — DN Design Studio, Vijayawada";
+    const description =
+      post?.excerpt ||
+      "A closer look at one of the homes designed and executed by DN Design Studio in Vijayawada — service, gallery and the client's own words.";
+    const url = `${origin}/our-work/${params.slug}`;
+    const coverImage = post?.cover_image ? loaderData?.data?.media?.[post.cover_image] : undefined;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
+        ...(coverImage
+          ? [
+              { property: "og:image", content: coverImage },
+              { name: "twitter:image", content: coverImage },
+            ]
+          : []),
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: ProjectDetail,
 });
 
