@@ -10,7 +10,7 @@ interface SitemapEntry {
   priority?: string;
 }
 
-export const Route = createFileRoute("/sitemap.xml")({
+export const Route = createFileRoute("/sitemap/xml")({
   server: {
     handlers: {
       GET: async () => {
@@ -52,12 +52,17 @@ export const Route = createFileRoute("/sitemap.xml")({
           if (error) throw error;
 
           entries.push(
-            ...data.map((post) => ({
-              path: `/our-work/${encodeURIComponent(post.slug)}`,
-              lastmod: post.created_at ? new Date(post.created_at).toISOString().split("T")[0] : undefined,
-              changefreq: "monthly" as const,
-              priority: "0.6",
-            })),
+            ...data.map((post) => {
+              const entry: SitemapEntry = {
+                path: `/our-work/${encodeURIComponent(post.slug)}`,
+                changefreq: "monthly",
+                priority: "0.6",
+              };
+              if (post.created_at) {
+                entry.lastmod = new Date(post.created_at).toISOString().split("T")[0];
+              }
+              return entry;
+            }),
           );
 
           if (data.length < pageSize) break;
