@@ -15,11 +15,11 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as OurWorkRouteImport } from './routes/our-work'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudioLoginRouteImport } from './routes/studio-login'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as OurWorkIndexRouteImport } from './routes/our-work.index'
 import { Route as OurWorkSlugRouteImport } from './routes/our-work.$slug'
-import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -50,6 +50,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudioLoginRoute = StudioLoginRouteImport.update({
   id: '/studio-login',
   path: '/studio-login',
@@ -70,11 +75,6 @@ const OurWorkSlugRoute = OurWorkSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => OurWorkRoute,
 } as any)
-const SitemapXmlRoute = SitemapXmlRouteImport.update({
-  id: '/sitemap/xml',
-  path: '/sitemap/xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,10 +82,10 @@ export interface FileRoutesByFullPath {
   '/our-work': typeof OurWorkRouteWithChildren
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/studio-login': typeof StudioLoginRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/our-work/$slug': typeof OurWorkSlugRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/our-work/': typeof OurWorkIndexRoute
 }
 export interface FileRoutesByTo {
@@ -93,10 +93,10 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/studio-login': typeof StudioLoginRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/our-work/$slug': typeof OurWorkSlugRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/our-work': typeof OurWorkIndexRoute
 }
 export interface FileRoutesById {
@@ -107,10 +107,10 @@ export interface FileRoutesById {
   '/our-work': typeof OurWorkRouteWithChildren
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/studio-login': typeof StudioLoginRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/our-work/$slug': typeof OurWorkSlugRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/our-work/': typeof OurWorkIndexRoute
 }
 export interface FileRouteTypes {
@@ -121,10 +121,10 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/reviews'
     | '/services'
+    | '/sitemap.xml'
     | '/studio-login'
     | '/admin'
     | '/our-work/$slug'
-    | '/sitemap/xml'
     | '/our-work/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -132,10 +132,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/reviews'
     | '/services'
+    | '/sitemap.xml'
     | '/studio-login'
     | '/admin'
     | '/our-work/$slug'
-    | '/sitemap/xml'
     | '/our-work'
   id:
     | '__root__'
@@ -145,10 +145,10 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/reviews'
     | '/services'
+    | '/sitemap.xml'
     | '/studio-login'
     | '/_authenticated/admin'
     | '/our-work/$slug'
-    | '/sitemap/xml'
     | '/our-work/'
   fileRoutesById: FileRoutesById
 }
@@ -159,8 +159,8 @@ export interface RootRouteChildren {
   OurWorkRoute: typeof OurWorkRouteWithChildren
   ReviewsRoute: typeof ReviewsRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudioLoginRoute: typeof StudioLoginRoute
-  SitemapXmlRoute: typeof SitemapXmlRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -207,6 +207,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/studio-login': {
       id: '/studio-login'
       path: '/studio-login'
@@ -234,13 +241,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/our-work/$slug'
       preLoaderRoute: typeof OurWorkSlugRouteImport
       parentRoute: typeof OurWorkRoute
-    }
-    '/sitemap/xml': {
-      id: '/sitemap/xml'
-      path: '/sitemap/xml'
-      fullPath: '/sitemap/xml'
-      preLoaderRoute: typeof SitemapXmlRouteImport
-      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -276,8 +276,8 @@ const rootRouteChildren: RootRouteChildren = {
   OurWorkRoute: OurWorkRouteWithChildren,
   ReviewsRoute: ReviewsRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudioLoginRoute: StudioLoginRoute,
-  SitemapXmlRoute: SitemapXmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

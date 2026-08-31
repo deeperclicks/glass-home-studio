@@ -10,7 +10,7 @@ interface SitemapEntry {
   priority?: string | undefined;
 }
 
-export const Route = createFileRoute("/sitemap/xml")({
+export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
