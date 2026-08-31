@@ -92,6 +92,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Boutique interior design studio in Vijayawada. Full home 3D design from ₹15,000, modular kitchens, false ceilings and end-to-end interiors.",
       },
       { name: "author", content: SITE.name },
+      {
+        name: "google-site-verification",
+        content: "qP3XxO3v02WE7VwAkOEV7UFLWX-DWT0oNdUa_g9UpMg",
+      },
       { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
