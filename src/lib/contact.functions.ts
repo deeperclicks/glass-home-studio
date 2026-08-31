@@ -63,9 +63,10 @@ export const submitEnquiry = createServerFn({ method: "POST" })
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "DN Design Studio <onboarding@resend.dev>",
+            from: process.env["CONTACT_FROM_EMAIL"] ?? "DN Design Studio <onboarding@resend.dev>",
             to: ["dndesignstudio.vja@gmail.com"],
             reply_to: undefined,
+
             subject: `New enquiry — ${data.name} (${data.service})`,
             text: [
               `Name: ${data.name}`,
