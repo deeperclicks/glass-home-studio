@@ -117,9 +117,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "@id": "https://dndesignstudio.example/#studio",
+          "@id": "https://dndesignstudio.in/#studio",
           name: SITE.name,
-          image: "https://dndesignstudio.example/favicon.png",
+          image: "https://dndesignstudio.in/favicon.png",
+          url: "https://dndesignstudio.in",
           description:
             "Interior design studio in Vijayawada offering full home 3D design, modular kitchens, false ceilings and end-to-end interiors.",
           telephone: SITE.phonePrimary,
@@ -132,8 +133,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             postalCode: "520010",
             addressCountry: "IN",
           },
-          geo: { "@type": "GeoCoordinates", latitude: 16.5062, longitude: 80.648 },
-          sameAs: [SITE.instagram],
+          geo: { "@type": "GeoCoordinates", latitude: 16.4961146, longitude: 80.6634463 },
+          sameAs: [SITE.instagram, SITE.googleReviews],
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: SITE.rating,
