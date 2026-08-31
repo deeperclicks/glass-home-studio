@@ -5,9 +5,9 @@ const BASE_URL = "https://dndesignstudio.in";
 
 interface SitemapEntry {
   path: string;
-  lastmod?: string;
+  lastmod?: string | undefined;
   changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
-  priority?: string;
+  priority?: string | undefined;
 }
 
 export const Route = createFileRoute("/sitemap/xml")({
