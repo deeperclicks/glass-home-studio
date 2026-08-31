@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as OurWorkRouteImport } from './routes/our-work'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudioLoginRouteImport } from './routes/studio-login'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as OurWorkIndexRouteImport } from './routes/our-work.index'
@@ -49,6 +50,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudioLoginRoute = StudioLoginRouteImport.update({
   id: '/studio-login',
   path: '/studio-login',
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/our-work': typeof OurWorkRouteWithChildren
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/studio-login': typeof StudioLoginRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/our-work/$slug': typeof OurWorkSlugRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/studio-login': typeof StudioLoginRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/our-work/$slug': typeof OurWorkSlugRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   '/our-work': typeof OurWorkRouteWithChildren
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/studio-login': typeof StudioLoginRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/our-work/$slug': typeof OurWorkSlugRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/reviews'
     | '/services'
+    | '/sitemap.xml'
     | '/studio-login'
     | '/admin'
     | '/our-work/$slug'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/reviews'
     | '/services'
+    | '/sitemap.xml'
     | '/studio-login'
     | '/admin'
     | '/our-work/$slug'
@@ -134,6 +145,7 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/reviews'
     | '/services'
+    | '/sitemap.xml'
     | '/studio-login'
     | '/_authenticated/admin'
     | '/our-work/$slug'
@@ -147,6 +159,7 @@ export interface RootRouteChildren {
   OurWorkRoute: typeof OurWorkRouteWithChildren
   ReviewsRoute: typeof ReviewsRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudioLoginRoute: typeof StudioLoginRoute
 }
 
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/studio-login': {
@@ -256,6 +276,7 @@ const rootRouteChildren: RootRouteChildren = {
   OurWorkRoute: OurWorkRouteWithChildren,
   ReviewsRoute: ReviewsRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudioLoginRoute: StudioLoginRoute,
 }
 export const routeTree = rootRouteImport
